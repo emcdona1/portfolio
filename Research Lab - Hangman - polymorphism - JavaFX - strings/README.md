@@ -23,7 +23,6 @@ Use String methods to validate a player's guess (did they enter a letter? Did th
 Test the software and try to identify edge cases.
 
 ## Contents
-Java Code Final/
 Solution code, which was provided to student peer leaders for reference (in case of unclear/ambiguous written instructions, to show one potential "correct" solution).
 
 - Dictionary.java - Provided class (written by a previous student) to read in the words.txt file, and used to randomly select a word for the game. Students learn about file I/O later in the semester, so this action was encapsulated.
