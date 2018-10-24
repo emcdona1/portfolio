@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Sign-Up Form</title>
+	<link rel="stylesheet" href="form_styles.css">
+</head>
+<body>
+	<form action="results.html">
+
+		<h2>Sweepstakes Entry Form</h2>
+		<h3>Please complete the fields below.</h3>
+		<div>
+			<label><b>First Name:</b></label>
+			<input type="text" min="2" pattern="[A-Za-z]{2,}" placeholder="Enter first name" name="first" required>
+		</div>
+
+		<div>
+			<label><b>Last Name:</b></label>
+			<input type="text" min="2" pattern="[A-Za-z]{2,}" placeholder="Enter last name" name="last" required>
+		</div>
+		
+		<div> 
+			<label><b>Phone #:</b></label>
+			<input type="text" placeholder="Enter phone number, xxx-xxx-xxxx" name="phone" pattern="\d{3}-\d{3}-\d{4}" required>
+		</div>
+		
+		<div> 
+			<label><b>Email Address:</b></label>
+			<input type="text" placeholder="Enter email address" name="email" pattern="[A-z0-9.-_]+@[A-z0-9.-_]+.[A-z]+" required>
+		</div>
+		
+		<div>
+			<label><b>Lucky Number :</b></label>
+			<input type="number" placeholder="Enter a number, 1-100" name="luckynum" min=1 max=100 required>
+		</div>
+		
+		<div>
+			<label><b>Date of Birth:</b></label>
+			<input type="text" placeholder="mm/dd/yyyy" name="dob" pattern="\d{1,2}/\d{1,2}/(19|20)\d{2}" required>
+		</div>
+		
+		<div>
+			<button type="submit">Submit</button>
+		</div>
+
+	</form>
+</body>
+</html>
+
