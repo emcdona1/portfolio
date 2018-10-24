@@ -10,12 +10,17 @@
 - Provide guided practice for how to test software and identify edge cases
 
 ## Student Activities
-- Examine the Dictionary class -- including its variables/constants, constructors, and methods -- to understand how it operates.
-- Examine the provided code for the Hangman class. Identify variables/constants, methods, and how an application is laid out.
-- Outline the methods of the Hangman class.
-- Use their understanding of Hangman to construct a set of instructions (i.e. game logic / algorithm), which can be translated to psuedocode and then to Java.
-- Use String methods to validate a player's guess (did they enter a letter? Did they enter a letter they already tried?) and determine if the guess is correct.
-- Test the software and try to identify edge cases.
+Examine the Dictionary class -- including its variables/constants, constructors, and methods -- to understand how it operates.
+
+Examine the provided code for the Hangman class. Identify variables/constants, methods, and how an application is laid out.
+
+Outline the methods of the Hangman class.
+
+Use their understanding of Hangman to construct a set of instructions (i.e. game logic / algorithm), which can be translated to psuedocode and then to Java.
+
+Use String methods to validate a player's guess (did they enter a letter? Did they enter a letter they already tried?) and determine if the guess is correct.
+
+Test the software and try to identify edge cases.
 
 ## Contents
 Java Code Final/
