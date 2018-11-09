@@ -1,7 +1,7 @@
 # Beth McDonald portfolio
 
 ## Overview
-This repo was created to showcase some of the code I've written. I mainly work with Java, but am also learning how to write Python scripts for the purpose of working with datasets (ETL, exploratory analysis, and eventually visualization).
+This repo was created to showcase some of the code I've written. I mainly work with Java, and I am learning how to use Python for the purpose of working with datasets (ETL, exploratory analysis, and eventually visualization).
 Resume available on http://www.linkedin.com/in/bethrmcdonald.
 
 ## Contents
