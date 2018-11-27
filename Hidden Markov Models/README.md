@@ -20,8 +20,7 @@ Next S lines: (doubles) each row of the emission table, tab-separated
 ## Sample Output
 (Bold text is user input)
 
-'''
-Enter file name of transition & emission tables: **traffic.txt**
+```Enter file name of transition & emission tables: **traffic.txt**
 Enter # of time increments to calculate: **5**
 Possible states are: Green Yellow Red 
 Enter the initial probabilities of each state (for time unit 0). If initial state is known, that state = 1.0: **0 0 1**
@@ -42,5 +41,4 @@ Time 1: 98.2% chance it's Red (Sensed: Red)
 Time 2: 50.8% chance it's Green (Sensed: Green)
 Time 3: 88.1% chance it's Green (Sensed: Green)
 Time 4: 95.6% chance it's Green (Sensed: Green)
-Time 5: 96.5% chance it's Green (Sensed: Green)
-'''
+Time 5: 96.5% chance it's Green (Sensed: Green)```
