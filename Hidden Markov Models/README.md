@@ -10,12 +10,12 @@
 * weather.txt - Sample input files for a weather sensor (with infallible rain detection!)
 
 ## Input File Format Specifications
-Line 1: (integer) # of states, S
-Line 2: (strings) Name of each states, tab-separated
-Line 3: (not used) Transition Table header. Rows = yesterday, Cols = today
-Next S lines: (doubles) each row of the transition table, tab-separated
-Next line: (not used) Emissions Table header. Rows = actual, Cols = sensor reading
-Next S lines: (doubles) each row of the emission table, tab-separated
+* Line 1: (integer) # of states, S
+* Line 2: (strings) Name of each states, tab-separated
+* Line 3: (not used) Transition Table header. Rows = yesterday, Cols = today
+* Next S lines: (doubles) each row of the transition table, tab-separated
+* Next line: (not used) Emissions Table header. Rows = actual, Cols = sensor reading
+* Next S lines: (doubles) each row of the emission table, tab-separated
 
 ## Sample Output
 *Bold text is user input*
