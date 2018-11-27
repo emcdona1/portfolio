@@ -8,7 +8,7 @@ Resume available on http://www.linkedin.com/in/bethrmcdonald.
 ### Hangman Research Lab
 A simple hangman game written in JavaFX, and created for Java Programming II students (CS-207). The project allows students to practice working with Strings, and to apply the principles of inheritance and polymorphism. Students are given a partially written codebase and are guided to complete the program using the Java API documentation, and to consider how they can test their program.
 
-## Hidden Markov Model
+### Hidden Markov Model
 This is a simple program that calculates state probability using Hidden Markov Models.  Emissions and transition probability tables are inputted in tab-delimited files (specified in the program header). The user inputs initial states and observations/sensor values. The program then calculates and displays the most likely state for each time interval.
 
 ### Image Processing Research Lab
