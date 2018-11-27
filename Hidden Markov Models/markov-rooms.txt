@@ -1,0 +1,10 @@
+3
+Room 1	Room 2	Room 3
+Transition Table: rows = yesterday, cols = today
+0.7		0.2		0.1
+0.3		0.4		0.3
+0.2		0.3		0.5
+Emission Table: rows = actual, cols = sensor reading
+0.7		0.2		0.1
+0.2		0.6		0.2
+0.1		0.1		0.8

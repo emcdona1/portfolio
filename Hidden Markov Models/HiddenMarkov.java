@@ -1,36 +1,53 @@
 import java.util.Scanner;
-import java.text.DecimalFormat; 
+import java.text.DecimalFormat;
+import java.io.*;
+
+/*INPUT FILE FORMAT
+Line 1: (integer) # of states, S
+Line 2: (strings) Name of each states, tab-separated
+Line 3: (not used) Transition Table header. Rows = yesterday, Cols = today
+Next S lines: (doubles) each row of the transition table, tab-separated
+Next line: (not used) Emissions Table header. Rows = actual, Cols = sensor reading
+Next S lines: (doubles) each row of the emission table, tab-separated
+*/
+
 public class HiddenMarkov
 {
-    /*private static double[][] transition = {{0.8, 0.15, 0.05},
-                                            {0.4, 0.4, 0.2},
-                                            {0.2, 0.6, 0.2}}; // rows = yesterday, cols = today
-   private static double[][] emission = {  {0.6, 0.4, 0},
-                                            {0.3, 0.7, 0},
-                                            {0.0, 0.0, 1}}; // rows = actual, cols = sensor reading*/
-    private static double[][] transition = {{0.7, 0.2, 0.1},
-                                            {0.3, 0.4, 0.3},
-                                            {0.2, 0.3, 0.5}};
-    private static double[][] emission = {  {0.7, 0.2, 0.1},
-                                            {0.2, 0.6, 0.2},
-                                            {0.1, 0.1, 0.8}};
+    private static int states;
+    private static String[] labels;
+    private static double[][] transition; // rows = yesterday, cols = today
+    private static double[][] emission; // rows = actual, cols = sensor reading
+    
     private static double[] initial;
     private static int[] observations;
-    //private static String[] labels = {"Sunny", "Cloudy", "Rainy"};
-    private static String[] labels = {"Room 1", "Room 2", "Room 3"};
     
     public static void main(String[] args) {
         Scanner kbd = new Scanner(System.in);
-        int states = 3;
-        System.out.print("Enter D days to calculate [1, D]: ");
-        int days = kbd.nextInt();
-        observations = new int[days];
         
-        input(kbd, states, days);
+        boolean fileReadIn = false;
+        while (!fileReadIn) {
+            System.out.print("Enter file name of transition & emission tables: ");
+            String filename = kbd.nextLine();
+            try {
+                fileInput(filename);
+                fileReadIn = true;
+            } catch(FileNotFoundException ex) {
+                System.out.println(filename + " is not a valid file.");
+            } catch(NumberFormatException ex) {
+                System.out.println(filename + " is not formatted correctly.");
+            }
+        }
+        
+        System.out.print("Enter # of time increments to calculate: ");
+        int increments = kbd.nextInt();
+        observations = new int[increments];
+        
+        input(kbd, increments);
                 
-        double[][] probabilities = calculateHMMs(days, states); //probabilities is indexed [0, days]! 0 contains initial state
+        double[][] probabilities = calculateHMMs(increments, states); //probabilities is indexed [0, days]! 0 contains initial state
         printHMMs(probabilities);
     }
+    
     public static double[][] calculateHMMs(int days, int states) {
         double[][] probs = new double[days + 1][states];
         for(int n = 0; n < states; n++) {
@@ -59,9 +76,9 @@ public class HiddenMarkov
         
         return probs;
     }
-    
     public static void printHMMs(double[][] probs) {
         DecimalFormat dec = new DecimalFormat("#0.0000");
+        DecimalFormat per = new DecimalFormat("#00.0");
         System.out.println("All computed probabilities: ");
         for(int r = 1; r < probs.length; r++) {
             System.out.print("Day " + r + ": \t");
@@ -80,12 +97,42 @@ public class HiddenMarkov
                     max = probs[r][c];
                 }
             }
-            System.out.println("Day " + r + ": " + labels[argmax] + " (Sensed: " + labels[observations[r - 1]] + ")");
+            System.out.println("Time " + r + ": " + per.format(probs[r][argmax] * 100) + "% chance it's " + labels[argmax] + " (Sensed: " + labels[observations[r - 1]] + ")");
         }
     }
-    
-    public static void input(Scanner kbd, int states, int days) {
-        System.out.print("Enter the initial probabilities of each state (if initial state is known, that state = 1.0): ");
+
+
+
+    public static void fileInput(String filename) throws FileNotFoundException, NumberFormatException {
+        File f = new File(filename);
+        Scanner in = new Scanner(f);
+        
+        states = Integer.parseInt(in.nextLine());
+        labels = in.nextLine().split("\t+");
+        in.nextLine(); //throw away header
+        transition = new double[states][states];
+        for(int i = 0; i < states; i++) {
+            for(int j = 0; j < states; j++) {
+                transition[i][j] = in.nextDouble();
+            }
+        }
+        in.nextLine();
+        
+        in.nextLine(); //throw away header
+        emission = new double[states][states];
+        for(int i = 0; i < states; i++) {
+            for(int j = 0; j < states; j++) {
+                emission[i][j] = in.nextDouble();
+            }
+        }
+        in.close();
+    }
+    public static void input(Scanner kbd, int increments) {
+        System.out.print("Possible states are: ");
+        for(int i = 0; i < states; i++) {
+            System.out.print(labels[i] + " ");
+        }
+        System.out.print("\nEnter the initial probabilities of each state (for time unit 0). If initial state is known, that state = 1.0: ");
         initial = new double[states];
         for(int i = 0; i < states; i++) {
             double input = -1;
@@ -96,11 +143,13 @@ public class HiddenMarkov
         }
         
         for(int i = 0; i < states; i++) {
-            System.out.print(i + " is " + labels[i] + "\t");
+            System.out.print(i + " is " + labels[i] + "\n");
         }
+        
         System.out.println();
-        System.out.print("Enter observations (sensor readings) for days 1 through " + days + ": ");
-        for(int i = 0; i < days; i++) {
+        
+        System.out.print("Enter " + increments + " observations (i.e. sensor readings): ");
+        for(int i = 0; i < increments; i++) {
             int reading = -1;
             while(reading > states || reading < 0) {
                 reading = kbd.nextInt();
