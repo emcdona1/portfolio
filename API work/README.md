@@ -17,6 +17,7 @@ Our company uses a website called Teachworks to handle scheduling.  We needed to
 ## Input/output
 - User enters start and end dates (inclusive) for the pay period.
 - Outputs a single CSV file in the following format:
+
 | Teacher Name 	| Date                  	| Downtime (in minutes) 	|
 |--------------	|-----------------------	|-----------------------	|
 | First Last   	| Monday 26 Aug 2019    	| 70                    	|
