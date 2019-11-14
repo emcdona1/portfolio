@@ -31,13 +31,10 @@ etc.
 
 
 ### Known issues/limitations
-- Some teachers have a non-teaching gap in their schedule (e.g. a 10am lesson, and then a 3-9pm teaching day); this program does not yet exclude these "one-off" lessons.
+- Some teachers have a non-teaching gap in their schedule (e.g. a 4pm private lesson during a 3-9pm teaching day); this program does not yet exclude these "one-off" lessons.
 - Only processes up to the first 50 employees.  (Not a current issue.)
-- The API sometimes rejects valid requests.
+- The API sometimes rejects valid requests. 
 
 ### Future developments
-- Generate log file, rather than terminal verification.
-- Print a single success/failure message to console.
-- Create testing/verbose mode argument.
-- Run program for a single teacher, specified by first name and last initial.
+- Exclude private lessons/outside obligations.
 - Save to separate directory.
