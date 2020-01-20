@@ -1,6 +1,7 @@
 # Hidden Markov Model
 
 ## Discussion
+This is a simple program that calculates state probability using Hidden Markov Models. Emissions and transition probability tables are inputted in tab-delimited files (specified in the program header). The user inputs initial states and observations/sensor values. The program then calculates and displays the most likely state for each time interval.
 
 
 ## Contents
@@ -9,7 +10,9 @@
 * traffic.txt - Sample input file for a self-driving robot detecting a traffic light
 * weather.txt - Sample input files for a weather sensor (with infallible rain detection!)
 
-## Input File Format Specifications
+## Details
+
+### Input File Format Specifications
 * Line 1: (integer) # of states, S
 * Line 2: (strings) Name of each states, tab-separated
 * Line 3: (not used) Transition Table header. Rows = yesterday, Cols = today
@@ -17,7 +20,7 @@
 * Next line: (not used) Emissions Table header. Rows = actual, Cols = sensor reading
 * Next S lines: (doubles) each row of the emission table, tab-separated
 
-## Sample Output
+### Sample Output
 *Bold text is user input*
 
 
